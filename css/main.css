@@ -132,6 +132,7 @@ float:left !important;
 width:192px;
 background:#999;
 text-align:center !important; 
+max-width: 160px;
 }
 #nav li:hover {
 background:#777;
