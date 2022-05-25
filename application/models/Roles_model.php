@@ -65,12 +65,14 @@ public function availAccesos($id){
 
 			$idRol = $userData->id_rol;
 			
-			$this->db->select('c.idRolAcceso, r.idRol, r.rol, a.idAcceso, a.opcion, a.url, i.icono, c.descripcion');
+			$this->db->select('c.idRolAcceso, r.idRol, r.rol, a.idAcceso, a.grupo, a.idPadre, a.opcion, a.url, i.icono, c.descripcion');
 			$this->db->from('rol_acceso c');
 			$this->db->join('roles as r', 'c.idRol = r.idRol');
 			$this->db->join('acceso as a', 'c.idAcesso = a.idAcceso');
 			$this->db->join('icono as i', 'a.idIcono = i.idIcono');
 			$this->db->where('r.idRol', $idRol);
+			$this->db->order_by('a.grupo', 'ASC');
+			$this->db->order_by('a.idPadre', 'ASC');
 			$this->db->order_by('a.orden', 'ASC');
 			$query=$this->db->get();
 			return $query->result_array();

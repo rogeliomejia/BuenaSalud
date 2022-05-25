@@ -70,7 +70,7 @@ html {
 	}
 
 	p {
-		margin: 0 0 10px;
+		margin: 0 0 0px;
 		padding:0;
 	}
 
@@ -80,7 +80,7 @@ html {
 		font-size: 11px;
 		border-top: 1px solid #D0D0D0;
 		line-height: 32px;
-		padding: 10px 0px 10px 0px;
+		padding: 0px 0px 10px 0px;
 		margin: 0px 0px 0px -50px;
 	}
 
@@ -119,4 +119,43 @@ html {
 	.center {
   margin-left: auto;
   margin-right: auto;
+}
+
+
+#nav {
+list-style:none;
+height:2em;
+}
+#nav li {
+position:relative !important; 
+float:left !important; 
+width:192px;
+background:#999;
+text-align:center !important; 
+}
+#nav li:hover {
+background:#777;
+}
+#nav a, #nav p {
+display:block;
+color:#000;
+text-decoration:none;
+line-height:2em;
+padding:  5px 0px;
+}
+.navbar-nav > li > a, .navbar-nav > li > p {
+padding-top:  5px;
+padding-bottom: 5px;
+}
+/* --------- Drop Down -------- */
+#nav ul {
+position:absolute;
+left:-999em;
+top:2em;
+list-style:none;
+}
+#nav li:hover ul {
+left:0;
+margin-left: -40px;
+top:auto;
 }

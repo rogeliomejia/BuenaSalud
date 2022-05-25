@@ -29,35 +29,70 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</div>
 			</div>
 			<div id="navbar">
-				<ul class="nav navbar-nav">
+				<ul class="nav navbar-nav" id="nav">
 					
 					<?php
+					
+					$cont = 0;
 					if($this->session->userdata('username') != null):
 
 					 foreach ($menuOptions as $item) : ?>
+						
+						<?php
+
+
+if ($cont != 0 && $item['idPadre'] == 0){
+echo("</ul>");
+echo("</li>");
+}
+
+ ?>
+
+<?php
+if ($item['idPadre'] == 0): 
+$cont++;
+	?>
+
 						<li>
-							<a href="<?php echo base_url();?><?php echo($item['url']); ?>">
-								<i class="<?php echo($item['icono']); ?>" aria-hidden="true"></i> <?php echo($item['opcion']); ?>
-							</a>
-						</li>
+							<?php if ($item['opcion']==='Inicio' || $item['opcion']==='Home'): ?>
+								<a href="<?php echo base_url();?><?php echo($item['url']); ?>">
+									<i class="<?php echo($item['icono']); ?>" aria-hidden="true"></i> <?php echo($item['opcion']); ?>
+								</a>
+							<?php else: ?>
+								<p>
+									<i class="<?php echo($item['icono']); ?>" aria-hidden="true"></i> <?php echo($item['opcion']); ?>
+								</p>
+							<?php endif; ?>
+
+
+							
+						<ul>
+
+
+
+
+<?php elseif ($item['idPadre'] > 0): ?>
+							
+								<li>
+									<a href="<?php echo base_url();?><?php echo($item['url']); ?>">
+										<i class="<?php echo($item['icono']); ?>" aria-hidden="true"></i> <?php echo($item['opcion']);?>
+									</a>
+								</li>
+					
+<?php endif; ?>
+
+
+			
 
 					
 
 					<?php 
+						endforeach; 
+						endif;
+						?>
 
-					 endforeach; 
-					 endif;
-					 ?>
-
-					
-
-
-<!--
-<li>
-						<a href="<?php echo base_url();?>Usuarios/index"><i class="fa fa-users fa-2x" aria-hidden="true"></i> Usuarios
-						</a>
+</ul> 
 					</li>
--->
 					
 				</ul>
 				
