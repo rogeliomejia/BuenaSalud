@@ -10,11 +10,6 @@ public function listRoles(){
 		return $query->result_array();
 	}
 
-public function listIconos(){
-		$query=$this->db->get('icono');
-		return $query->result_array();
-	}
-
 public function listAccesos($id){
 		//select idAcesso from rol_acceso where idRol = $id
 
@@ -38,6 +33,28 @@ public function listAccesos($id){
 		$query=$this->db->get();
 		return $query->result_array();
 	}
+
+
+public function listIconos(){
+		$this->db->select('idIcono, icono');
+		$this->db->from('icono');
+		return $this->db->get()->result_array();
+	}
+
+public function listIdPadre(){
+		$this->db->select('idAcceso, opcion, grupo');
+		$this->db->from('acceso');
+		$this->db->where('idPadre', 0);
+		return $this->db->get()->result_array();
+	}
+
+public function listGrupoAcceso(){
+		$this->db->select('grupo, opcion');
+		$this->db->from('acceso');
+		$this->db->where('idPadre', 0);
+		return $query=$this->db->get()->result_array();
+	}
+
 
 }
 ?>

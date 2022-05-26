@@ -23,7 +23,7 @@
       selectable: true,
       selectMirror: true,
       select: function(arg) {
-        var title = prompt('Event Title:');
+        /*var title = prompt('Event Title:');
         if (title) {
           calendar.addEvent({
             title: title,
@@ -32,11 +32,14 @@
             allDay: arg.allDay
           })
         }
-        calendar.unselect()
+        calendar.unselect()*/
       },
       eventClick: function(arg) {
-        if (confirm('Are you sure you want to delete this event?')) {
-          arg.event.remove()
+        if (confirm('¿Confirma que ya finalizó la entrega en: '+arg.event.title+'?')) {
+          //arg.event.remove()
+          var idEntregado = parseInt(arg.event.id);
+          $.ajax('<?php echo base_url();?>Entregas/updYaEntregado/'+idEntregado);
+          arg.event.remove();
         }
       },
       editable: true,
@@ -46,64 +49,8 @@
     monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
 		dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
 		dayNamesShort: ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'],
-      events: [
-        {
-          title: 'All Day Event',
-          start: '2020-09-01'
-        },
-        {
-          title: 'Long Event',
-          start: '2020-09-07',
-          end: '2020-09-10'
-        },
-        {
-          groupId: 999,
-          title: 'Repeating Event',
-          start: '2020-09-09T16:00:00'
-        },
-        {
-          groupId: 999,
-          title: 'Repeating Event',
-          start: '2020-09-16T16:00:00'
-        },
-        {
-          title: 'Conference',
-          start: '2020-09-11',
-          end: '2020-09-13'
-        },
-        {
-          title: 'Meeting',
-          start: '2020-09-12T10:30:00',
-          end: '2020-09-12T12:30:00'
-        },
-        {
-          title: 'Lunch',
-          start: '2020-09-12T12:00:00'
-        },
-        {
-          title: 'Meeting',
-          start: '2020-09-12T14:30:00'
-        },
-        {
-          title: 'Happy Hour',
-          start: '2020-09-12T17:30:00'
-        },
-        {
-          title: 'Dinner',
-          start: '2020-09-12T20:00:00'
-        },
-        {
-          title: 'Birthday Party',
-          start: '2020-09-13T07:00:00'
-        },
-        {
-          title: 'Click for Google',
-          url: 'http://google.com/',
-          start: '2020-09-28'
-        }
-      ]
+      events: <?php echo(json_encode($listEntregas)); ?>
     });
-
     calendar.render();
   });
 
@@ -113,8 +60,6 @@
 
 
 <style>
-
-
   #calendar {
     max-width: 1100px;
     margin: 0 auto;
@@ -122,6 +67,5 @@
 
 </style>
 
-	
-  <div id='calendar' style="display: block;"></div>
+<div id='calendar' style="display: block;"></div>
 

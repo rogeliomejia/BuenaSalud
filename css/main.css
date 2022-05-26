@@ -159,4 +159,5 @@ list-style:none;
 left:0;
 margin-left: -40px;
 top:auto;
+z-index: 999 !important;
 }
