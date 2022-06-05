@@ -36,7 +36,7 @@ public function listAccesos($id){
 
 
 public function listIconos(){
-		$this->db->select('idIcono, icono');
+		$this->db->select('idIcono, nombre, icono');
 		$this->db->from('icono');
 		return $this->db->get()->result_array();
 	}
