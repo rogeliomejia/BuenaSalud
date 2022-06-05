@@ -55,6 +55,37 @@ public function listGrupoAcceso(){
 		return $query=$this->db->get()->result_array();
 	}
 
+public function listCategorias(){
+		$query=$this->db->get('categorias');
+		return $query->result_array();
+	}
+
+public function listProductos(){
+		$query=$this->db->get('productos');
+		return $query->result_array();
+	}
+
+public function listSucursales(){
+		$query=$this->db->get('sucursales');
+		return $query->result_array();
+	}
+
+public function listProveedores(){
+		$query=$this->db->get('proveedores');
+		return $query->result_array();
+	}
+
+public function listCarriers(){
+		$query=$this->db->get('carriers');
+		return $query->result_array();
+	}
+
+public function listCompras(){
+		$query=$this->db->get('compras');
+		return $query->result_array();
+	}
+
+
 
 }
 ?>
