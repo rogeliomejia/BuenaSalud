@@ -112,6 +112,35 @@ public function update(){
 			redirect('welcome');
 		}
 	}
+
+
+	public function fetch_user(){  
+           $this->load->model("Productos_model");  
+           $fetch_data = $this->Productos_model->make_datatables();  
+           $data = array();  
+           foreach($fetch_data as $row)  
+           {  
+                $sub_array = array();
+                $sub_array[] = $row->idProducto;  
+                $sub_array[] = $row->producto;  
+                $sub_array[] = $row->idCategoria; 
+                $sub_array[] = $row->descripcionProducto; 
+                $sub_array[] = $row->precio; 
+                $sub_array[] = $row->existencias; 
+              	$sub_array[] = '<a class="btn btn-primary" href="'.base_url().'Productos/details/'.$row->idProducto.'">Detalles</a>';
+                $sub_array[] = '<a class="btn btn-info" href="'.base_url().'Productos/edit/'.$row->idProducto.'">Modificar</a>'; 
+                $sub_array[] = '<a class="btn btn-danger" onclick="modal('.$row->idProducto.', '.$row->idProducto.')">Eliminar</a>';
+                $data[] = $sub_array;  
+           }  
+           $output = array(  
+                "draw" => intval($_POST["draw"]),  
+                "recordsTotal" => $this->Productos_model->get_all_data(),  
+                "recordsFiltered" => $this->Productos_model->get_filtered_data(),  
+                "data" => $data  
+           );  
+           echo json_encode($output);  
+     	}
+
 }
 
 ?>
