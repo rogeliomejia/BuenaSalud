@@ -28,9 +28,9 @@ function fetch_user(){
                 $sub_array[] = $row->idCarrier;  
                 $sub_array[] = $row->carrier;  
                 $sub_array[] = $row->telefonoCarrier;  
-              	 $sub_array[] = '<a class="btn btn-info" href="'.base_url().'Carriers/details/'.$row->idCarrier.'">Detalles</a>';
+              	 $sub_array[] = '<a class="btn btn-primary" href="'.base_url().'Carriers/details/'.$row->idCarrier.'">Detalles</a>';
                 $sub_array[] = '<a class="btn btn-info" href="'.base_url().'Carriers/edit/'.$row->idCarrier.'">Modificar</a>'; 
-                $sub_array[] = '<a class="btn btn-danger" onclick="modal('.$row->idCarrier.', '.$row->carrier.')">Eliminar</a>';
+                $sub_array[] = '<a class="btn btn-danger" onclick="modal('.$row->idCarrier.', '.$row->idCarrier.')">Eliminar</a>';
                 $data[] = $sub_array;  
            }  
            $output = array(  
@@ -40,7 +40,7 @@ function fetch_user(){
                 "data" => $data  
            );  
            echo json_encode($output);  
-      }
+     	}
 
 public function details($id = NULL){
 		$userData = $this->session->userdata('username');

@@ -16,6 +16,29 @@ class Categorias extends CI_Controller{
 		}
 }
 
+function fetch_user(){  
+           $this->load->model("Categorias_model");  
+           $fetch_data = $this->Categorias_model->make_datatables();  
+           $data = array();  
+           foreach($fetch_data as $row)  
+           {  
+                $sub_array = array();
+                $sub_array[] = $row->idCategoria;  
+                $sub_array[] = $row->categoria;  
+                $sub_array[] = $row->descripcion;  
+              	$sub_array[] = '<a class="btn btn-primary" href="'.base_url().'Categorias/details/'.$row->idCategoria.'">Detalles</a>';
+                $sub_array[] = '<a class="btn btn-info" href="'.base_url().'Categorias/edit/'.$row->idCategoria.'">Modificar</a>'; 
+                $sub_array[] = '<a class="btn btn-danger" onclick="modal('.$row->idCategoria.', '.$row->idCategoria.')">Eliminar</a>';
+                $data[] = $sub_array;  
+           }  
+           $output = array(  
+                "draw" => intval($_POST["draw"]),  
+                "recordsTotal" => $this->Categorias_model->get_all_data(),  
+                "recordsFiltered" => $this->Categorias_model->get_filtered_data(),  
+                "data" => $data  
+           );  
+           echo json_encode($output);  
+     	}
 
 public function details($id = NULL){
 		$userData = $this->session->userdata('username');
