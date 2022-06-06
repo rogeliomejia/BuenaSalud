@@ -81,10 +81,8 @@
            "serverSide":true,
            "order":[],  
            "ajax":{  
-                //"url":"https://127.0.0.1/BuenaSalud/Carriers/fetch_user",
                 "url":"<?php echo base_url() . 'Carriers/fetch_user'; ?>",
                 "type":"POST",
-                 //"beforeSend": "function (request) {request.withCredentials = false;}"
            },
            "columnDefs":[
                 {
@@ -95,7 +93,6 @@
             "language": {
                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
            },
-           //"paging": "true",
            "bPaginate":"true",
            "sPaginationType":"full_numbers",
            "bLengthChange": "true",
