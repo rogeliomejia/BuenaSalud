@@ -50,12 +50,14 @@ INSERT INTO `acceso` (`idAcceso`, `idPadre`, `grupo`, `opcion`, `url`, `idIcono`
 (6, 2, 2, 'Iconos', 'Iconos/index', 4, 3),
 (7, 3, 3, 'Fechas entregas', 'Entregas/index', 13, 5),
 (8, 2, 2, 'Accesos', 'Accesos/index', 16, 2),
-(9, 2, 2, 'Categorias', 'Categorias/index', 6, 5),
-(10, 2, 2, 'Productos', 'Productos/index', 7, 6),
-(11, 2, 2, 'Sucursales', 'Sucursales/index', 8, 7),
-(12, 2, 2, 'Proveedores', 'Proveedores/index', 9, 8),
-(13, 2, 2, 'Carriers', 'Carriers/index', 10, 9),
-(14, 2, 2, 'Compras', 'Compras/index', 11, 10);
+(9, 16, 5, 'Categorias', 'Categorias/index', 6, 0),
+(10, 16, 5, 'Medicamentos', 'Productos/index', 7, 1),
+(11, 15, 4, 'Sucursales', 'Sucursales/index', 8, 7),
+(12, 15, 4, 'Proveedores', 'Proveedores/index', 9, 8),
+(13, 3, 3, 'Carriers', 'Carriers/index', 10, 9),
+(14, 3, 3, 'Compras', 'Compras/index', 11, 10),
+(15, 0, 4, 'Tiendas', ' ', 17, 3),
+(16, 0, 5, 'Productos', ' ', 18, 0);
 
 -- --------------------------------------------------------
 
@@ -249,7 +251,9 @@ INSERT INTO `icono` (`idIcono`, `nombre`, `icono`) VALUES
 (13, 'Calendario', 'fa fa-calendar fa-2x'),
 (14, 'Mantenimientos', 'fa fa-cogs fa-2x'),
 (15, 'Shopping Cart', 'fa fa-shopping-cart fa-2x'),
-(16, 'Llave', 'fa fa-key fa-2x');
+(16, 'Llave', 'fa fa-key fa-2x'),
+(17, 'Canasta de compras', 'fa fa-shopping-basket fa-2x'),
+(18, 'Bolsa de compras', 'fa fa-shopping-bag fa-2x');
 
 -- --------------------------------------------------------
 
@@ -390,7 +394,9 @@ INSERT INTO `rol_acceso` (`idRolAcceso`, `idRol`, `idAcesso`, `descripcion`) VAL
 (37, 1, 7, 'Para saber la entrega de productos'),
 (38, 1, 6, ''),
 (41, 1, 8, 'Otorgar accesos a los roles'),
-(42, NULL, NULL, NULL);
+(42, NULL, NULL, NULL),
+(43, 1, 15, 'Admin necesita gestionar la información de las tiendas'),
+(44, 1, 16, 'Accesos a productos y categorías');
 
 -- --------------------------------------------------------
 
