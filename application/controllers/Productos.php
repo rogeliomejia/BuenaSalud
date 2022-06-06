@@ -123,7 +123,7 @@ public function update(){
                 $sub_array = array();
                 $sub_array[] = $row->idProducto;  
                 $sub_array[] = $row->producto;  
-                $sub_array[] = $row->idCategoria; 
+                $sub_array[] = $row->categoria; 
                 $sub_array[] = $row->descripcionProducto; 
                 $sub_array[] = $row->precio; 
                 $sub_array[] = $row->existencias; 

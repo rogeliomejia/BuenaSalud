@@ -6,10 +6,6 @@ class Productos_model extends CI_Model{
 	}
   
 
-      var $table = "productos";  
-      var $select_column = array("idProducto", "producto", "idCategoria", "descripcionProducto", "precio", "existencias");  
-      var $order_column = array("idProducto", "producto", "idCategoria", "descripcionProducto", "precio", "existencias");
-
 	public function getProducto($id){
 		$this->db->where('idProducto', $id);
 		$query=$this->db->get('productos');
@@ -74,18 +70,24 @@ class Productos_model extends CI_Model{
       }
 
 
+ 	  var $table = "productos";  
+      var $select_column = array("p.idProducto, p.idCategoria, c.categoria, p.producto, p.precio, p.descripcionProducto, p.existencias");  
+      var $order_column = array("p.idProducto, p.idCategoria, c.categoria, p.producto, p.precio, p.descripcionProducto, p.existencias");
+
+
 	function make_query()  
       {  
-           $this->db->select($this->select_column);  
-           $this->db->from($this->table);  
+           $this->db->select("p.idProducto, p.idCategoria, c.categoria, p.producto, p.precio, p.descripcionProducto, p.existencias");  
+           $this->db->from('productos as p');
+			$this->db->join('categorias as c', 'p.idCategoria = c.idCategoria'); 
            if(isset($_POST["search"]["value"]))  
            {  
-                $this->db->like("idProducto", $_POST["search"]["value"]);
-                $this->db->or_like("producto", $_POST["search"]["value"]);
-                $this->db->or_like("idCategoria", $_POST["search"]["value"]); 
-                $this->db->or_like("descripcionProducto", $_POST["search"]["value"]); 
-                $this->db->or_like("precio", $_POST["search"]["value"]); 
-                $this->db->or_like("existencias", $_POST["search"]["value"]);
+                $this->db->like("p.idProducto", $_POST["search"]["value"]);
+                $this->db->or_like("p.producto", $_POST["search"]["value"]);
+                $this->db->or_like("c.categoria", $_POST["search"]["value"]); 
+                $this->db->or_like("p.descripcionProducto", $_POST["search"]["value"]); 
+                $this->db->or_like("p.precio", $_POST["search"]["value"]); 
+                $this->db->or_like("p.existencias", $_POST["search"]["value"]);
            }  
            if(isset($_POST["order"]))  
            {  

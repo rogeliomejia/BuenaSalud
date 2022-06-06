@@ -34,7 +34,7 @@
 <tr>
 	<td><?php echo($item['idProducto']) ?></td>
 	<td><?php echo($item['producto']) ?></td>
-	<td><?php echo($item['idCategoria']) ?></td>
+	<td><?php echo($item['categoria']) ?></td>
 	<td style="width: 300px;"><?php echo($item['descripcionProducto']) ?></td>
 	<td><?php echo($item['precio']) ?></td>
 	<td><?php echo($item['existencias']) ?></td>
