@@ -51,7 +51,8 @@ public function details($id = NULL){
 			}
 
 			$data['menuOptions'] = $this->Roles_model->accesos();
-
+			$data['listCategorias'] = $this->Dropdowns->listCategorias();
+			
 			$this->load->view('shared/header', $data);
 			$this->load->view('Productos/edit', $data);
 			$this->load->view('shared/footer');
@@ -72,6 +73,7 @@ public function details($id = NULL){
 
 			if($this->form_validation->run()===FALSE){
 				$data['menuOptions'] = $this->Roles_model->accesos();
+				$data['listCategorias'] = $this->Dropdowns->listCategorias();
 
 				$this->load->view('shared/header', $data);
 				$this->load->view('Productos/create');

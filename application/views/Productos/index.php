@@ -28,7 +28,9 @@
 	<th>Descripción</th>
 	<th>Precio</th>
 	<th>Existencias</th>
-	<th>Opciones</th>
+	<th>Información</th> 
+  <th>Actualización</th>  
+  <th>Eliminación</th>
 </tr></thead>
 <?php foreach ($ListProductos as $item) : ?>
 <tr>

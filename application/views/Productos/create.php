@@ -6,8 +6,15 @@
   </div>
 
   <div class="form-group col-md-4">
-    <label>Categoría</label>
-    <input type="text" class="form-control" name="idCategoria" placeholder="Categoría" required>
+    <label>Categoria</label>
+    <select name="idCategoria" id="cars" class="form-control" required>
+      <option value="" selected>--Seleccione--</option>
+      <?php foreach ($listCategorias as $item) : ?>
+        <option value="<?php echo($item['idCategoria'])?>" 
+          ><?php echo($item['categoria'])?></option>
+      <?php endforeach; ?>
+    </select>
+
   </div>
 
   <div class="form-group col-md-4">
