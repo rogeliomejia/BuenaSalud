@@ -1,27 +1,12 @@
--- phpMyAdmin SQL Dump
--- version 5.1.1
--- https://www.phpmyadmin.net/
---
--- Servidor: 127.0.0.1
--- Tiempo de generación: 26-05-2022 a las 05:59:44
--- Versión del servidor: 10.4.20-MariaDB
--- Versión de PHP: 7.3.29
+
+
+create Database farmacia;
+use farmacia;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de datos: `farmacia`
---
-
--- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `acceso`
@@ -354,7 +339,9 @@ INSERT INTO `roles` (`idRol`, `rol`, `descripcion`) VALUES
 (1, 'Administrador', 'Acceso total'),
 (2, 'Farmacista', 'Acceso limitado a la gestión de productos'),
 (3, 'Cliente', 'Accede sólo a compras en linea'),
-(5, 'Proveedor', 'Proveedor externo');
+(5, 'Proveedor', 'Proveedor externo'),
+(6, 'Repartidor', 'Accede sólo a compras en linea'),
+(7, 'Bodeguero', 'Accede sólo a compras en linea');
 
 -- --------------------------------------------------------
 
@@ -386,7 +373,18 @@ INSERT INTO `rol_acceso` (`idRolAcceso`, `idRol`, `idAcesso`, `descripcion`) VAL
 (10, 1, 12, 'Admin necesita poder gestionar proveedores'),
 (11, 1, 13, 'Admin necesita poder gestionar carriers'),
 (12, 1, 14, 'Admin necesita poder gestionar compras'),
+(13, 2, 14, 'Farmacista necesita poder gestionar compras'),
+(14, 2, 15, 'Farmacista necesita poder gestionar tiendas'),
+(15, 2, 16, 'Farmacista necesita poder gestionar productos'),
+(16, 2, 1, 'Farmacista necesita poder ir a inicio'),
+(17, 7, 9, 'Bodeguero necesita poder gestionar categorias'),
+(18, 7, 16, 'Bodeguero necesita poder gestionar productos'),
+(19, 7, 1, 'Bodeguero necesita poder ir a inicio'),
 (20, 3, 1, 'Necesario para regresar al inicio'),
+(21, 6, 1, 'Repartidor necesita poder ir a inicio'),
+(22, 6, 3, 'Repartidor necesita poder gestionar ventas'),
+(23, 6, 13, 'Repartidor necesita poder gestionar carriers'),
+(24, 6, 14, 'Repartidor necesita poder gestionar compras'),
 (33, 5, 3, ''),
 (34, 5, 1, ''),
 (35, 5, 2, ''),
@@ -396,7 +394,11 @@ INSERT INTO `rol_acceso` (`idRolAcceso`, `idRol`, `idAcesso`, `descripcion`) VAL
 (41, 1, 8, 'Otorgar accesos a los roles'),
 (42, NULL, NULL, NULL),
 (43, 1, 15, 'Admin necesita gestionar la información de las tiendas'),
-(44, 1, 16, 'Accesos a productos y categorías');
+(44, 1, 16, 'Accesos a productos y categorías'),
+(45, 6, 7, ''),
+(46, 5, 13, ''),
+(47, 5, 15, ''),
+(48, 5, 11, ''),
 
 -- --------------------------------------------------------
 
@@ -449,7 +451,10 @@ INSERT INTO `users` (`id`, `nombre`, `apellido`, `username`, `pass`, `email`, `d
 (1, 'Rogelio', 'Mejía', 'rmejia', '7abc07c1f4cd4f24bf0621a86d501d2e293003d28e6bd58328295067af9ff5c8c52c9aeda0639e976f8dc90181083a45cc4c1dc61703d3202f2ca75fbd62c9d0ICL9aENHBNC1HnfKDtb09e1j64uxSYHEbBN16acX89Y=', 'rogelio.mejia21@itca.edu.sv', 'SS', 1, '7777-7777', 0),
 (2, 'Juan', 'Perez', 'jperez', '7abc07c1f4cd4f24bf0621a86d501d2e293003d28e6bd58328295067af9ff5c8c52c9aeda0639e976f8dc90181083a45cc4c1dc61703d3202f2ca75fbd62c9d0ICL9aENHBNC1HnfKDtb09e1j64uxSYHEbBN16acX89Y=', 'juan.perez@itca.edu.sv', 'SS', 2, '7777-7778', 0),
 (3, 'Jose', 'Cerrado', 'jose', '02b7164a0dc9302057212a2715049ae1b21854d325f8850c84edaf12bd5c82d3ae0417eec22181ad133761076c877a27cd0718032eede9de54518ed335a134dfQiO7zWKGBcLWN7k8VChcJqN/urLBx/4RFLwrgo3xlEY=', 'jose.cerrado@itca.edu.sv', 'SS', 3, '7777-7779', 1),
-(4, 'Jong', 'Yang', 'jyang', '7abc07c1f4cd4f24bf0621a86d501d2e293003d28e6bd58328295067af9ff5c8c52c9aeda0639e976f8dc90181083a45cc4c1dc61703d3202f2ca75fbd62c9d0ICL9aENHBNC1HnfKDtb09e1j64uxSYHEbBN16acX89Y=', 'jong.yang@itca.edu.sv', 'SS', 1, '7766-7779', 0);
+(4, 'Jong', 'Yang', 'jyang', '7abc07c1f4cd4f24bf0621a86d501d2e293003d28e6bd58328295067af9ff5c8c52c9aeda0639e976f8dc90181083a45cc4c1dc61703d3202f2ca75fbd62c9d0ICL9aENHBNC1HnfKDtb09e1j64uxSYHEbBN16acX89Y=', 'jong.yang@itca.edu.sv', 'SS', 1, '7766-7779', 0),
+(4, 'Horacio', 'Sosa', 'hsosa', '7abc07c1f4cd4f24bf0621a86d501d2e293003d28e6bd58328295067af9ff5c8c52c9aeda0639e976f8dc90181083a45cc4c1dc61703d3202f2ca75fbd62c9d0ICL9aENHBNC1HnfKDtb09e1j64uxSYHEbBN16acX89Y=', 'horacio.sosa@itca.edu.sv', 'SS', 6, '7766-7779', 0),
+(4, 'Maria', 'Paz', 'mpaz', '7abc07c1f4cd4f24bf0621a86d501d2e293003d28e6bd58328295067af9ff5c8c52c9aeda0639e976f8dc90181083a45cc4c1dc61703d3202f2ca75fbd62c9d0ICL9aENHBNC1HnfKDtb09e1j64uxSYHEbBN16acX89Y=', 'maria.paz@itca.edu.sv', 'SS', 5, '7766-7779', 0),
+(4, 'Oswaldo', 'Rojas', 'orojas', '7abc07c1f4cd4f24bf0621a86d501d2e293003d28e6bd58328295067af9ff5c8c52c9aeda0639e976f8dc90181083a45cc4c1dc61703d3202f2ca75fbd62c9d0ICL9aENHBNC1HnfKDtb09e1j64uxSYHEbBN16acX89Y=', 'oswaldo.rojas@itca.edu.sv', 'SS', 7, '7766-7779', 0);
 
 --
 -- Índices para tablas volcadas

@@ -10,7 +10,7 @@
 $userData = $this->session->userdata('username');
 
 		if($userData != null){
-			echo($userData->nombre.' '.$userData->apellido);
+			echo($userData->nombre.' '.$userData->apellido.' (log out)');
 		}
 
 ?>
