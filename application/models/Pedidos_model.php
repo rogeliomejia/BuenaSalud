@@ -60,7 +60,15 @@ class Pedidos_model extends CI_Model{
       } 
   
 	public function getPedido($id){
-		$this->db->where('idPedido', $id);
+		$this->db->select("p.idPedido, cl.nombreCliente, ca.carrier, su.sucursal, p.fechaPedido, p.fechaEnvioVenta, p.entregado, p.costoEnvio, d.numVenta,
+               pr.producto, d.cantidadPedido");  
+          $this->db->from('pedido as p');
+          $this->db->join('detalleventa as d', 'p.idPedido = d.idPedido'); 
+          $this->db->join('productos as pr', 'd.codigoProducto = pr.idProducto');
+          $this->db->join('cliente as cl', 'cl.idCliente = p.idCliente'); 
+          $this->db->join('carriers as ca', 'ca.idCarrier = p.idCarrier'); 
+          $this->db->join('sucursales as su', 'su.idSucursal = p.idSucursal'); 
+          $this->db->where('p.idPedido', $id);
 		$query=$this->db->get('pedido');
 		return $query->row_array();
 	}

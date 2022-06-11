@@ -7,17 +7,17 @@
 
   <div class="form-group col-md-4">
     <label>Cliente</label>
-    <p><?php echo($idPedido['idCliente']);?></p>
+    <p><?php echo($idPedido['nombreCliente']);?></p>
   </div>
 
   <div class="form-group col-md-4">
     <label>Carrier</label>
-    <p><?php echo($idPedido['idCarrier']);?></p>
+    <p><?php echo($idPedido['carrier']);?></p>
   </div>
 
   <div class="form-group col-md-4">
     <label>Sucursal</label>
-    <p><?php echo($idPedido['idSucursal']);?></p>
+    <p><?php echo($idPedido['sucursal']);?></p>
   </div>
 
   <div class="form-group col-md-4">
@@ -40,6 +40,26 @@
     <p><?php echo($idPedido['costoEnvio']);?></p>
   </div>
 
+  <div class="form-group col-md-4">
+    <label>Costo Envío</label>
+    <p><?php echo($idPedido['costoEnvio']);?></p>
+  </div>
+
+  <div class="form-group col-md-4">
+  <label>N° Venta</label>
+  <p><?php echo($idPedido['numVenta']);?></p>
+  </div>
+
+  <div class="form-group col-md-4">
+  <label>Producto</label>
+  <p><?php echo($idPedido['producto']);?></p>
+  </div>
+
+  <div class="form-group col-md-4">
+  <label>Cantidad</label>
+  <p><?php echo($idPedido['cantidadPedido']);?></p>
+  </div>
+
   <br>
   <div class="form-group col-md-12">
   <a class="btn btn-info" 
@@ -48,4 +68,3 @@
   <div>
 </div>
 
-  
