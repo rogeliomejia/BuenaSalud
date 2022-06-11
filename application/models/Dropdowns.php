@@ -91,7 +91,10 @@ public function listCompras(){
 		return $query->result_array();
 	}
 
-
+public function listPedidos(){
+		$query=$this->db->get('pedido');
+		return $query->result_array();
+	}
 
 }
 ?>

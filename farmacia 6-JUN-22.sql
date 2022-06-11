@@ -398,7 +398,7 @@ INSERT INTO `rol_acceso` (`idRolAcceso`, `idRol`, `idAcesso`, `descripcion`) VAL
 (45, 6, 7, ''),
 (46, 5, 13, ''),
 (47, 5, 15, ''),
-(48, 5, 11, ''),
+(48, 5, 11, '');
 
 -- --------------------------------------------------------
 
@@ -409,7 +409,7 @@ INSERT INTO `rol_acceso` (`idRolAcceso`, `idRol`, `idAcesso`, `descripcion`) VAL
 CREATE TABLE `sucursales` (
   `idSucursal` int(11) NOT NULL,
   `sucursal` varchar(30) DEFAULT NULL,
-  `direccionSucursal` varchar(100) DEFAULT NULL,
+  `direccionSucursal` varchar(150) DEFAULT NULL,
   `telefonoSucursal` varchar(9) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -452,9 +452,9 @@ INSERT INTO `users` (`id`, `nombre`, `apellido`, `username`, `pass`, `email`, `d
 (2, 'Juan', 'Perez', 'jperez', '7abc07c1f4cd4f24bf0621a86d501d2e293003d28e6bd58328295067af9ff5c8c52c9aeda0639e976f8dc90181083a45cc4c1dc61703d3202f2ca75fbd62c9d0ICL9aENHBNC1HnfKDtb09e1j64uxSYHEbBN16acX89Y=', 'juan.perez@itca.edu.sv', 'SS', 2, '7777-7778', 0),
 (3, 'Jose', 'Cerrado', 'jose', '02b7164a0dc9302057212a2715049ae1b21854d325f8850c84edaf12bd5c82d3ae0417eec22181ad133761076c877a27cd0718032eede9de54518ed335a134dfQiO7zWKGBcLWN7k8VChcJqN/urLBx/4RFLwrgo3xlEY=', 'jose.cerrado@itca.edu.sv', 'SS', 3, '7777-7779', 1),
 (4, 'Jong', 'Yang', 'jyang', '7abc07c1f4cd4f24bf0621a86d501d2e293003d28e6bd58328295067af9ff5c8c52c9aeda0639e976f8dc90181083a45cc4c1dc61703d3202f2ca75fbd62c9d0ICL9aENHBNC1HnfKDtb09e1j64uxSYHEbBN16acX89Y=', 'jong.yang@itca.edu.sv', 'SS', 1, '7766-7779', 0),
-(4, 'Horacio', 'Sosa', 'hsosa', '7abc07c1f4cd4f24bf0621a86d501d2e293003d28e6bd58328295067af9ff5c8c52c9aeda0639e976f8dc90181083a45cc4c1dc61703d3202f2ca75fbd62c9d0ICL9aENHBNC1HnfKDtb09e1j64uxSYHEbBN16acX89Y=', 'horacio.sosa@itca.edu.sv', 'SS', 6, '7766-7779', 0),
-(4, 'Maria', 'Paz', 'mpaz', '7abc07c1f4cd4f24bf0621a86d501d2e293003d28e6bd58328295067af9ff5c8c52c9aeda0639e976f8dc90181083a45cc4c1dc61703d3202f2ca75fbd62c9d0ICL9aENHBNC1HnfKDtb09e1j64uxSYHEbBN16acX89Y=', 'maria.paz@itca.edu.sv', 'SS', 5, '7766-7779', 0),
-(4, 'Oswaldo', 'Rojas', 'orojas', '7abc07c1f4cd4f24bf0621a86d501d2e293003d28e6bd58328295067af9ff5c8c52c9aeda0639e976f8dc90181083a45cc4c1dc61703d3202f2ca75fbd62c9d0ICL9aENHBNC1HnfKDtb09e1j64uxSYHEbBN16acX89Y=', 'oswaldo.rojas@itca.edu.sv', 'SS', 7, '7766-7779', 0);
+(5, 'Horacio', 'Sosa', 'hsosa', '7abc07c1f4cd4f24bf0621a86d501d2e293003d28e6bd58328295067af9ff5c8c52c9aeda0639e976f8dc90181083a45cc4c1dc61703d3202f2ca75fbd62c9d0ICL9aENHBNC1HnfKDtb09e1j64uxSYHEbBN16acX89Y=', 'horacio.sosa@itca.edu.sv', 'SS', 6, '7766-7779', 0),
+(6, 'Maria', 'Paz', 'mpaz', '7abc07c1f4cd4f24bf0621a86d501d2e293003d28e6bd58328295067af9ff5c8c52c9aeda0639e976f8dc90181083a45cc4c1dc61703d3202f2ca75fbd62c9d0ICL9aENHBNC1HnfKDtb09e1j64uxSYHEbBN16acX89Y=', 'maria.paz@itca.edu.sv', 'SS', 5, '7766-7779', 0),
+(7, 'Oswaldo', 'Rojas', 'orojas', '7abc07c1f4cd4f24bf0621a86d501d2e293003d28e6bd58328295067af9ff5c8c52c9aeda0639e976f8dc90181083a45cc4c1dc61703d3202f2ca75fbd62c9d0ICL9aENHBNC1HnfKDtb09e1j64uxSYHEbBN16acX89Y=', 'oswaldo.rojas@itca.edu.sv', 'SS', 7, '7766-7779', 0);
 
 --
 -- Índices para tablas volcadas
@@ -712,6 +712,16 @@ ALTER TABLE `users`
   ADD CONSTRAINT `fk_rol` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`idRol`);
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+
+--Para Windows 10
+
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
