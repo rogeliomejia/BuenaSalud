@@ -19,6 +19,7 @@ class Productos_model extends CI_Model{
 			'idCategoria' => $this->input->post('idCategoria'),
 			'descripcionProducto' => $this->input->post('descripcionProducto'),
 			'precio' => $this->input->post('precio'),
+			'imagenes' => $this->input->post('imagenes'),
 			'existencias' => $this->input->post('existencias')
 		);
 
@@ -33,6 +34,7 @@ class Productos_model extends CI_Model{
 			'idCategoria' => $this->input->post('idCategoria'),
 			'descripcionProducto' => $this->input->post('descripcionProducto'),
 			'precio' => $this->input->post('precio'),
+			'imagenes' => $this->input->post('imagenes'),
 			'existencias' => $this->input->post('existencias')
 		);
 

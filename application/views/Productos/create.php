@@ -32,6 +32,11 @@
     <input type="text" class="form-control" name="existencias" placeholder="Existencias" required>
   </div>
 
+  <div class="form-group col-md-4">
+    <label>Imagenes</label>
+    <input type="text" class="form-control" name="imagenes" placeholder="url de imagen" required>
+  </div>
+
 <div class="form-group col-md-12">
   <button type="submit" class="btn btn-primary">Guardar</button>
 

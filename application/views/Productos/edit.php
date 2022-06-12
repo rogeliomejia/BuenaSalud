@@ -43,6 +43,11 @@
     <input type="text" class="form-control" name="existencias" placeholder="Existencias" value="<?php echo($producto['existencias']);?>">
   </div>
 
+  <div class="form-group col-md-4">
+    <label>Imagenes</label>
+    <input type="text" class="form-control" name="imagenes" placeholder="url de imagen" required value="<?php echo($producto['imagenes']);?>">
+  </div>
+
 
 <div class="form-group col-md-12">
   <button type="submit" class="btn btn-primary">Modificar</button>
