@@ -61,7 +61,7 @@ public function listCategorias(){
 	}
 
 public function listProductos(){
-			$this->db->select('p.idProducto, p.idCategoria, c.categoria, p.producto, p.precio, p.descripcionProducto, p.existencias');
+			$this->db->select('p.idProducto, p.idCategoria, c.categoria, p.producto, p.precio, p.descripcionProducto, p.existencias, p.imagenes');
 			$this->db->from('productos as p');
 			$this->db->join('categorias as c', 'p.idCategoria = c.idCategoria');
 			$query=$this->db->get();
