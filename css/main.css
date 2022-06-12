@@ -65,7 +65,7 @@ html {
 	.userInfo{
 		position: absolute !important;
   		top: 10px !important;
-  		right: 15px;
+  		right: 1%;
   		color:  red;
 	}
 
@@ -119,6 +119,16 @@ html {
   margin-right: auto;
 }
 
+.product-title{
+	text-align: center;
+	font-weight: bold;
+	font-size: 1.5em;
+}
+
+.product-price{
+	text-align: center;
+	font-size: 1.5em;
+}
 
 #nav {
 list-style:none;
@@ -159,3 +169,54 @@ margin-left: -40px;
 top:auto;
 z-index: 999 !important;
 }
+
+.cart-navbar{
+	display: block;
+	position: absolute !important;
+  top: 10px !important;
+  right: 20%;
+}
+
+.cart{
+	display: block;
+	z-index: 61;
+}
+
+.cart:hover ~ .sumary{
+	left: 0;
+}
+
+.cart-icon{
+	color: white;
+}
+
+.cart-amount{
+	margin-left: 2px;
+	float: right;
+	color: white;
+	background-color: red;
+	padding: 0px 5px;
+	border-radius: 2px;
+}
+
+.pro{
+	font-weight: bold;
+}
+
+.sumary{
+	background-color: white;
+	padding: 5px 30px 5px 10px;
+	position: absolute;
+	width: 450px;
+	border-radius: 5px;
+	border-width: 2px !important;
+	border-style: solid;
+	border-color: gray !important;
+	margin-left: -300%;
+	z-index: 60;
+}
+
+.formaPago{
+	width: 140px;
+	margin-right: 20px;
+	}
