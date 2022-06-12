@@ -28,13 +28,13 @@ public function createShopping(){
 			'idSucursal' => 1,
 			'fechaPedido' => date("Y-m-d H:i:s"),
 			'fechaEnvioVenta' => $this->input->post('fechaEnvioVenta'),
-			'entregado' => $this->input->post('entregado'),
+			'entregado' => 0,
 			'costoEnvio' => $this->input->post('costoEnvio')
 		);
 
 $this->db->insert('pedido', $data);
-   $insert_id = $this->db->insert_id();
-   return  $insert_id;
+   $insert_id =$this->db->insert_id();
+   return $insert_id;
 	}
 
 public function createDetalle($idPedido, $codigoProducto, $cantidadPedido){

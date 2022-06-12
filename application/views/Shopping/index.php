@@ -1,7 +1,6 @@
 <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap.min.js"></script>
 
 
-
 <div class="cart-navbar">
 	<div class="cart" onclick="abrir()">
 		<i class="fa fa-shopping-cart fa-2x cart-icon"></i>
@@ -32,35 +31,40 @@
 <div class="modal fade" id="modalPago" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      
+      <form method="POST" action="<?php echo base_url();?>Shopping/create">
       <div class="modal-body">
+
         <h4 style="text-align: center;">Sus productos seleccionados son:<h4>
         	<br>
+
         	<div class="row" id="mod"></div>
         	<br><br>
-        	<div class="">
 
+        	<div class="">
+        		
         		<table>
         			<tr>
         				<td>Cliente:</td>
-        				<td><input type="text" class="formaPago"></td>
+        				<td><input type="text" class="formaPago" name="idCliente"></td>
         				<td>Carrier:</td>
-        				<td><input type="text" class="formaPago"></td>
+        				<td><input type="text" class="formaPago" name="idCarrier"></td>
         			</tr>
         			<tr>
         				<td>Fecha envío:</td>
-        				<td><input type="date" class="formaPago"></td>
+        				<td><input type="date" class="formaPago" name="fechaEnvioVenta"></td>
         				<td>Costo envío:</td>
-        				<td><input type="text" class="formaPago"></td>
+        				<td><input type="text" class="formaPago" name="costoEnvio"></td>
         			</tr>
         		</table>
 <div class="row" id="totalModal"></div>
+<input type="text" id="iterar" name="iterar" style="display:none" />
         	</div>
       </div>
       <div class="modal-footer">
-        <a class="btn btn-success" id="payment" href="">Procesar pago</a>
+        <input type="submit" class="btn btn-success" value="Procesar pago" />
         <a class="btn btn-primary" data-dismiss="modal">Cancelar</a>
       </div>
+      </form>
     </div>
   </div>
 </div>
@@ -71,6 +75,8 @@
 		$("#modalTrigger").click();
 	}
 </script>
+
+
 
 <div id="shop">
 <?php foreach ($ListProductos as $item) : ?>
@@ -148,7 +154,11 @@ if(!found){
 acumulado += precio;
 
 var line="";
+var arrSubtotal ="";
 for (const it of sell) {
+
+	arrSubtotal += '{"idProducto": '+it.idProd+', "cantidad": '+it.quant+'}';
+
 	line+= '<div class="pro col-md-0" style="display: none;">'+it.idProd+'</div>'+
 			'<div class="pro col-md-6">'+it.prod+'</div>'+
 			'<div class="pro col-md-3">'+it.quant+'</div>'+
@@ -157,9 +167,9 @@ for (const it of sell) {
 
 $("#row,#mod").html(line);
 $("#total,#totalModal").html('<div class="pro col-md-12" style="margin-left: 3em; font-weight: bold; margin-top:15px; font-size: 2.5em;"> Total: $'+Math.round(acumulado * 100) / 100+'</div>');
+$("#iterar").val(JSON.stringify(arrSubtotal));
 
-console.log(sell);
-console.log(seleccionado);
+//console.log(seleccionado);
 //mostrartotal(item);
 
 

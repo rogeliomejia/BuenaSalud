@@ -10,9 +10,6 @@ public function index(){
 			$data['ListProductos'] = $this->Dropdowns->listProductos();
 			$data['menuOptions'] = $this->Roles_model->accesos();
 
-			$data['ListIdPadre'] = $this->Dropdowns->listIdPadre();
-			$data['ListIcono'] = $this->Dropdowns->listIconos();
-
 			$this->load->view('shared/header', $data);
 			$this->load->view('Shopping/index', $data);
 			$this->load->view('shared/footer');
@@ -26,13 +23,19 @@ public function create(){
 		$userData = $this->session->userdata('username');
 
 		if($userData != null){
+$data['ListProductos'] = $this->Dropdowns->listProductos();
+			$data['menuOptions'] = $this->Roles_model->accesos();
 
 		$idPedido=$this->Shopping_model->createShopping();
+			//$idPedido=1;
 
+			$arrProductos = json_decode($this->input->post('iterar'));
 
+			foreach($arrProductos as $prod){
+		$this->Shopping_model->createDetalle($idPedido, $prod->idProducto, $prod->cantidad);
+			}
 
 		redirect('Shopping/index');
-
 		
 		}else{
 			redirect('welcome');
